@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:lixl.workshop.cassandra.def.1.0"
+	xmlns:tns="urn:lixl.workshop.cassandra.def.1.0"
+	elementFormDefault="qualified">
+	<element name="ColumnFamilies" type="tns:ColumnFamilies"/>
+
+	<complexType name="ColumnFamilies">
+		<sequence>
+			<element name="ColumnFamily" type="tns:ColumnFamily"
+				minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ColumnFamily">
+		<sequence>
+			<element name="Column" type="tns:Column" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+		<attribute name="name" type="string" use="required" />
+	</complexType>
+
+	<complexType name="Column">
+		<attribute name="name" type="string" use="required" />
+		<attribute name="type" type="tns:CassandraType" use="required" />
+		<attribute name="primaryKey" type="boolean" use="optional"
+			default="false" />
+	</complexType>
+    
+    <simpleType name="CassandraType">
+    	<restriction base="string">
+	    	<enumeration value="ascii"/>
+			<enumeration value="bigint"/>
+			<enumeration value="blob"/>
+			<enumeration value="boolean"/>
+			<enumeration value="counter"/>
+			<enumeration value="decimal"/>
+			<enumeration value="double"/>
+			<enumeration value="float"/>
+			<enumeration value="int"/>
+			<enumeration value="text"/>
+			<enumeration value="timestamp"/>
+			<enumeration value="uuid"/>
+			<enumeration value="varchar"/>
+			<enumeration value="varint"/>
+    	</restriction>
+  	</simpleType> 
+</schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:ColumnFamilies xmlns:tns="urn:lixl.workshop.cassandra.def.1.0" >
+	<tns:ColumnFamily name="employee">
+  		<tns:Column primaryKey="true" name="name" type="text"/>
+    	<tns:Column name="address" type="text"/>
+    	<tns:Column name="age" type="int"/>
+  </tns:ColumnFamily>
+  
+  	<tns:ColumnFamily name="MMOG_LOG">
+  		<tns:Column name="remoteHost" type="ascii"/>
+    	<tns:Column name="timestamp" type="ascii"/>
+    	<tns:Column name="duration" type="int"/>
+    	<tns:Column name="requestLine" type="text"/>
+    	<tns:Column name="httpStatus" type="int"/>
+    	<tns:Column name="contentRange" type="text"/>
+    	<tns:Column name="byteCounts" type="ascii"/>
+    	<tns:Column name="connectStatus" type="ascii"/>
+    	<tns:Column name="route" type="ascii"/>
+    	<tns:Column name="sessionId" type="ascii"/>
+    	<tns:Column name="cardOrigin" type="ascii"/>
+    	<tns:Column name="Ssl" type="ascii"/>
+    	<tns:Column name="sslCipher" type="ascii"/>
+    	<tns:Column name="adminResume" type="ascii"/>
+    	<tns:Column name="sslSessionId" type="ascii"/>
+    	<tns:Column name="uniqueId" type="ascii" primaryKey="true" />
+    	<tns:Column name="processId" type="int"/>
+  </tns:ColumnFamily>
+</tns:ColumnFamilies>

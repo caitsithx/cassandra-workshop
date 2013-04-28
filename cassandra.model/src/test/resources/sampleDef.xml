@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ColumnFamilies>
+  <ColumnFamily name="employee">
+    <Column isPrimaryKey="true" name="name" type="text"/>
+    <Column name="address" type="text"/>
+    <Column name="age" type="int_c"/>
+  </ColumnFamily>
+</ColumnFamilies>

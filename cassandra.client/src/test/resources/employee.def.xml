@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:ColumnFamilies xmlns:tns="urn:lixl.workshop.cassandra.def.1.0" >
+	<tns:ColumnFamily name="employee">
+  		<tns:Column primaryKey="true" name="name" type="text"/>
+    	<tns:Column name="address" type="text"/>
+    	<tns:Column name="age" type="int"/>
+  </tns:ColumnFamily>
+</tns:ColumnFamilies>
