@@ -5,13 +5,10 @@
 package lixl.workshop.cassandra.app.runner;
 
 import lixl.concurrent.runner.thread.TaskRunnable;
+import lixl.workshop.cassandra.client.simple.EncodedVO;
+import lixl.workshop.cassandra.client.simple.SimpleDao;
 
-import org.apache.commons.pool.ObjectPool;
-import org.apache.commons.pool.impl.GenericObjectPool;
 import org.apache.log4j.Logger;
-
-import lixl.workshop.cassandra.client.da.SimpleDao;
-import lixl.workshop.cassandra.client.vo.EncodedVO;
 
 /**
  * @author <a href="mailto:xiaoliang.li@gemalto.com">lixl </a>
@@ -19,45 +16,41 @@ import lixl.workshop.cassandra.client.vo.EncodedVO;
  */
 public class UserInsertionRunnable extends TaskRunnable{
 	private final static Logger LOGGER = Logger.getLogger(UserInsertionRunnable.class);
-	private ObjectPool<SimpleDao> m_daoPool = null;
+//	private ObjectPool<SimpleDao> m_daoPool = null;
 	
-	private EncodedVO m_valueObject;
+	private SimpleDao simpleDao = null;
+	private EncodedVO encodedValueObject;
 
+
+	/**
+	 * @param p_simpleDao the simpleDao to set
+	 */
+	public void setSimpleDao(SimpleDao p_simpleDao) {
+		this.simpleDao = p_simpleDao;
+	}
 	
 	/**
 	 * @param p_vo the vo to set
 	 */
 	public void setValueObject(EncodedVO p_vo) {
-		this.m_valueObject = p_vo;
+		this.encodedValueObject = p_vo;
 	}
 
-	/**
-	 * @param p_daoPool the daoPool to set
-	 */
-	public void setDaoPool(GenericObjectPool<SimpleDao> p_daoPool) {
-		this.m_daoPool = p_daoPool;
-	}
+//	/**
+//	 * @param p_daoPool the daoPool to set
+//	 */
+//	public void setDaoPool(GenericObjectPool<SimpleDao> p_daoPool) {
+//		this.m_daoPool = p_daoPool;
+//	}
 
 	@Override
 	protected int doTask() {
-		SimpleDao l_dao = null;
 
 		try {
-			l_dao = m_daoPool.borrowObject();
-
-			l_dao.insert(m_valueObject);
-
+			simpleDao.insert(encodedValueObject);
 		} catch (Exception ex) {
 			LOGGER.error("fail runnable exec", ex);
-		} finally {
-			if(l_dao != null){
-				try {
-					m_daoPool.returnObject(l_dao);
-				} catch (Exception ex) {
-					LOGGER.error("dao pool return err", ex);
-				}
-			}
-		}
+		} 
 		
 		return 1;
 	}

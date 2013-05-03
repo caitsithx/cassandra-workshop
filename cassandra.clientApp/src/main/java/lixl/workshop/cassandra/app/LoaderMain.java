@@ -11,6 +11,12 @@ import java.util.Map;
 import lixl.concurrent.runner.RunnerConfigParameters;
 import lixl.concurrent.runner.RunnerControl;
 import lixl.workshop.cassandra.app.runner.UserInsertionRunnable;
+import lixl.workshop.cassandra.client.simple.EncodedVO;
+import lixl.workshop.cassandra.client.simple.SimpleDao;
+import lixl.workshop.cassandra.client.simple.VOFactoryBase;
+import lixl.workshop.cassandra.client.simple.VOFactoryException;
+import lixl.workshop.cassandra.connection.ClientConnectionFactory;
+import lixl.workshop.cassandra.connection.ClientConnectionPool;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -20,15 +26,6 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.commons.configuration.ConfigurationFactory.PropertiesConfigurationFactory;
-import org.apache.commons.pool.impl.GenericObjectPool;
-
-
-import lixl.workshop.cassandra.client.da.SimpleDao;
-import lixl.workshop.cassandra.client.da.SimpleDaoPools;
-import lixl.workshop.cassandra.client.vo.EncodedVO;
-import lixl.workshop.cassandra.client.vo.VOFactoryBase;
-import lixl.workshop.cassandra.client.vo.VOFactoryException;
 
 /**
  * @author <a href="mailto:xiaoliang.li@gemalto.com">lixl </a>
@@ -73,29 +70,10 @@ public class LoaderMain {
 		
 		RunnerControl l_runCtr = new RunnerControl(CFG);
 
-		SimpleDaoPools l_daoPools = new SimpleDaoPools();
-		l_daoPools.setConfiguration(CFG);
-		
-		final GenericObjectPool<SimpleDao> l_daoPool = l_daoPools.getSimpleDaoPool();
-		
+		ClientConnectionFactory l_ccf = new ClientConnectionFactory();
+		l_ccf.setConfiguration(CFG);
+		final ClientConnectionPool l_daoPool = new ClientConnectionPool(l_ccf);
 		l_daoPool.setMaxActive(CFG.getInt(RunnerConfigParameters.MAX_INJECT_THREAD_COUNT));
-		
-//		l_runCtr.getReportAssembler().appendReport(new StringReport() {
-//			
-//			@Override
-//			public String getStringReport() {
-//				return String.format("%1d,%2d,%3d", 
-//						l_daoPool.getNumActive(),
-//						l_daoPool.getNumIdle(),
-//						l_daoPool.getMaxActive()
-//						);
-//			}
-//
-//			@Override
-//			public String getHeaders() {
-//				return "ActiveDaoNum,IdleDaoNum,MaxActDaoNum";
-//			}
-//		});
 		
 		l_runCtr.start();
 		
@@ -107,7 +85,10 @@ public class LoaderMain {
 			EncodedVO l_userVo = l_voFac.newVO(Double.toString(Math.random()), l_voRawCols);
 			UserInsertionRunnable l_insertTask = new UserInsertionRunnable();
 			
-			l_insertTask.setDaoPool(l_daoPool);
+			SimpleDao l_simpleDao = new SimpleDao();
+			l_simpleDao.setClientConnectionPool(l_daoPool);
+			l_simpleDao.setColumnFamily("employee");
+			l_insertTask.setSimpleDao(l_simpleDao);
 			l_insertTask.setValueObject(l_userVo);
 			
 			l_runCtr.submit(l_insertTask);

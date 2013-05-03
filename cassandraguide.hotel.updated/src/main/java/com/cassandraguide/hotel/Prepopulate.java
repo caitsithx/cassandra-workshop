@@ -3,9 +3,9 @@ package com.cassandraguide.hotel;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
-import lixl.workshop.cassandra.client.EntityDao;
-import lixl.workshop.cassandra.client.da.SimpleDao;
-import lixl.workshop.cassandra.client.vo.EncodedVO;
+import lixl.workshop.cassandra.client.jpalike.EntityDao;
+import lixl.workshop.cassandra.client.simple.EncodedVO;
+import lixl.workshop.cassandra.client.simple.SimpleDao;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -5,9 +5,9 @@
 package com.cassandraguide.hotel;
 
 
-import lixl.workshop.cassandra.client.ColumnFamily_A;
-import lixl.workshop.cassandra.client.Column_A;
-import lixl.workshop.cassandra.client.Key_A;
+import lixl.workshop.cassandra.client.jpalike.ColumnFamily_A;
+import lixl.workshop.cassandra.client.jpalike.Column_A;
+import lixl.workshop.cassandra.client.jpalike.Key_A;
 import lixl.workshop.cassandra.model.CassandraType;
 
 /**
