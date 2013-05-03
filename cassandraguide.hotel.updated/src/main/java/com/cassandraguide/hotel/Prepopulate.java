@@ -145,12 +145,12 @@ public class Prepopulate {
 //        List<Mutation> columnsToAdd = new ArrayList<Mutation>();
 //        Clock clock = new Clock(System.nanoTime());
 //        String keyName = "Spring Training";
-//        Column descCol = new Column("desc".getBytes(Constants.UTF8),
+//        ColumnDescriptor descCol = new ColumnDescriptor("desc".getBytes(Constants.UTF8),
 //                "Fun for baseball fans.".getBytes("UTF-8"), clock);
-//        Column phoneCol = new Column("phone".getBytes(Constants.UTF8),
+//        ColumnDescriptor phoneCol = new ColumnDescriptor("phone".getBytes(Constants.UTF8),
 //                "623-333-3333".getBytes(Constants.UTF8), clock);
 //
-//        List<Column> cols = new ArrayList<Column>();
+//        List<ColumnDescriptor> cols = new ArrayList<ColumnDescriptor>();
 //        cols.add(descCol);
 //        cols.add(phoneCol);
 //
@@ -159,7 +159,7 @@ public class Prepopulate {
 //
 //        Mutation columns = new Mutation();
 //        ColumnOrSuperColumn descCosc = new ColumnOrSuperColumn();
-//        SuperColumn sc = new SuperColumn();
+//        SCDescriptor sc = new SCDescriptor();
 //        sc.name = Constants.CAMBRIA_NAME.getBytes();
 //        sc.columns = cols;
 //
@@ -202,13 +202,13 @@ public class Prepopulate {
 //
 //        long ts = System.currentTimeMillis();
 //        String keyName = "Phoenix Zoo";
-//        Column descCol = new Column("desc".getBytes(UTF8),
+//        ColumnDescriptor descCol = new ColumnDescriptor("desc".getBytes(UTF8),
 //                "They have animals here.".getBytes("UTF-8"), new Clock(ts));
 //
-//        Column phoneCol = new Column("phone".getBytes(UTF8),
+//        ColumnDescriptor phoneCol = new ColumnDescriptor("phone".getBytes(UTF8),
 //                "480-555-9999".getBytes(UTF8), new Clock(ts));
 //
-//        List<Column> cols = new ArrayList<Column>();
+//        List<ColumnDescriptor> cols = new ArrayList<ColumnDescriptor>();
 //        cols.add(descCol);
 //        cols.add(phoneCol);
 //
@@ -219,7 +219,7 @@ public class Prepopulate {
 //
 //        Mutation columns = new Mutation();
 //        ColumnOrSuperColumn descCosc = new ColumnOrSuperColumn();
-//        SuperColumn sc = new SuperColumn();
+//        SCDescriptor sc = new SCDescriptor();
 //        sc.name = cambriaName.getBytes();
 //        sc.columns = cols;
 //
@@ -262,12 +262,12 @@ public class Prepopulate {
 //
 //        Clock clock = new Clock(System.nanoTime());
 //        String keyName = "Central Park";
-//        Column descCol = new Column("desc".getBytes(UTF8),
+//        ColumnDescriptor descCol = new ColumnDescriptor("desc".getBytes(UTF8),
 //                "Walk around in the park. It's pretty.".getBytes("UTF-8"), clock);
 //
 //        //no phone column for park
 //
-//        List<Column> cols = new ArrayList<Column>();
+//        List<ColumnDescriptor> cols = new ArrayList<ColumnDescriptor>();
 //        cols.add(descCol);
 //
 //        Map<String, List<Mutation>> innerMap =
@@ -275,7 +275,7 @@ public class Prepopulate {
 //
 //        Mutation columns = new Mutation();
 //        ColumnOrSuperColumn descCosc = new ColumnOrSuperColumn();
-//        SuperColumn waldorfSC = new SuperColumn();
+//        SCDescriptor waldorfSC = new SCDescriptor();
 //        waldorfSC.name = WALDORF_NAME.getBytes();
 //        waldorfSC.columns = cols;
 //
@@ -319,12 +319,12 @@ public class Prepopulate {
 //
 //        Clock clock = new Clock(System.nanoTime());
 //        String esbName = "Empire State Building";
-//        Column descCol = new Column("desc".getBytes(UTF8),
+//        ColumnDescriptor descCol = new ColumnDescriptor("desc".getBytes(UTF8),
 //                "Great view from 102nd floor.".getBytes("UTF-8"), clock);
-//        Column phoneCol = new Column("phone".getBytes(UTF8),
+//        ColumnDescriptor phoneCol = new ColumnDescriptor("phone".getBytes(UTF8),
 //                "212-777-7777".getBytes(UTF8), clock);
 //
-//        List<Column> esbCols = new ArrayList<Column>();
+//        List<ColumnDescriptor> esbCols = new ArrayList<ColumnDescriptor>();
 //        esbCols.add(descCol);
 //        esbCols.add(phoneCol);
 //
@@ -332,7 +332,7 @@ public class Prepopulate {
 //
 //        Mutation columns = new Mutation();
 //        ColumnOrSuperColumn descCosc = new ColumnOrSuperColumn();
-//        SuperColumn waldorfSC = new SuperColumn();
+//        SCDescriptor waldorfSC = new SCDescriptor();
 //        waldorfSC.name = WALDORF_NAME.getBytes();
 //        waldorfSC.columns = esbCols;
 //
@@ -437,17 +437,17 @@ public class Prepopulate {
 //
 //        Clock clock = new Clock(System.nanoTime());
 //
-//        Column nameCol = new Column("name".getBytes(UTF8),
+//        ColumnDescriptor nameCol = new ColumnDescriptor("name".getBytes(UTF8),
 //                W_NAME.getBytes("UTF-8"), clock);
-//        Column phoneCol = new Column("phone".getBytes(UTF8),
+//        ColumnDescriptor phoneCol = new ColumnDescriptor("phone".getBytes(UTF8),
 //                "415-222-2222".getBytes(UTF8), clock);
-//        Column addressCol = new Column("address".getBytes(UTF8),
+//        ColumnDescriptor addressCol = new ColumnDescriptor("address".getBytes(UTF8),
 //                "181 3rd Street".getBytes(UTF8), clock);
-//        Column cityCol = new Column("city".getBytes(UTF8),
+//        ColumnDescriptor cityCol = new ColumnDescriptor("city".getBytes(UTF8),
 //                "San Francisco".getBytes(UTF8), clock);
-//        Column stateCol = new Column("state".getBytes(UTF8),
+//        ColumnDescriptor stateCol = new ColumnDescriptor("state".getBytes(UTF8),
 //                "CA".getBytes("UTF-8"), clock);
-//        Column zipCol = new Column("zip".getBytes(UTF8),
+//        ColumnDescriptor zipCol = new ColumnDescriptor("zip".getBytes(UTF8),
 //                "94103".getBytes(UTF8), clock);
 //
 //        ColumnOrSuperColumn nameCosc = new ColumnOrSuperColumn();
@@ -510,17 +510,17 @@ public class Prepopulate {
 //
 //        Clock clock = new Clock(System.nanoTime());
 //
-//        Column nameCol = new Column("name".getBytes(UTF8),
+//        ColumnDescriptor nameCol = new ColumnDescriptor("name".getBytes(UTF8),
 //                WALDORF_NAME.getBytes("UTF-8"), clock);
-//        Column phoneCol = new Column("phone".getBytes(UTF8),
+//        ColumnDescriptor phoneCol = new ColumnDescriptor("phone".getBytes(UTF8),
 //                "212-555-5555".getBytes(UTF8), clock);
-//        Column addressCol = new Column("address".getBytes(UTF8),
+//        ColumnDescriptor addressCol = new ColumnDescriptor("address".getBytes(UTF8),
 //                "301 Park Ave".getBytes(UTF8), clock);
-//        Column cityCol = new Column("city".getBytes(UTF8),
+//        ColumnDescriptor cityCol = new ColumnDescriptor("city".getBytes(UTF8),
 //                "New York".getBytes(UTF8), clock);
-//        Column stateCol = new Column("state".getBytes(UTF8),
+//        ColumnDescriptor stateCol = new ColumnDescriptor("state".getBytes(UTF8),
 //                "NY".getBytes("UTF-8"), clock);
-//        Column zipCol = new Column("zip".getBytes(UTF8),
+//        ColumnDescriptor zipCol = new ColumnDescriptor("zip".getBytes(UTF8),
 //                "10019".getBytes(UTF8), clock);
 //
 //        ColumnOrSuperColumn nameCosc = new ColumnOrSuperColumn();
@@ -583,17 +583,17 @@ public class Prepopulate {
 //
 //        Clock clock = new Clock(System.nanoTime());
 //
-//        Column nameCol = new Column("name".getBytes(UTF8),
+//        ColumnDescriptor nameCol = new ColumnDescriptor("name".getBytes(UTF8),
 //                CLARION_NAME.getBytes("UTF-8"), clock);
-//        Column phoneCol = new Column("phone".getBytes(UTF8),
+//        ColumnDescriptor phoneCol = new ColumnDescriptor("phone".getBytes(UTF8),
 //                "480-333-3333".getBytes(UTF8), clock);
-//        Column addressCol = new Column("address".getBytes(UTF8),
+//        ColumnDescriptor addressCol = new ColumnDescriptor("address".getBytes(UTF8),
 //                "3000 N. Scottsdale Rd".getBytes(UTF8), clock);
-//        Column cityCol = new Column("city".getBytes(UTF8),
+//        ColumnDescriptor cityCol = new ColumnDescriptor("city".getBytes(UTF8),
 //                "Scottsdale".getBytes(UTF8), clock);
-//        Column stateCol = new Column("state".getBytes(UTF8),
+//        ColumnDescriptor stateCol = new ColumnDescriptor("state".getBytes(UTF8),
 //                "AZ".getBytes("UTF-8"), clock);
-//        Column zipCol = new Column("zip".getBytes(UTF8),
+//        ColumnDescriptor zipCol = new ColumnDescriptor("zip".getBytes(UTF8),
 //                "85255".getBytes(UTF8), clock);
 //
 //        ColumnOrSuperColumn nameCosc = new ColumnOrSuperColumn();
@@ -657,17 +657,17 @@ public class Prepopulate {
 //        //set up columns for Cambria
 //        Clock clock = new Clock(System.nanoTime());
 //
-//        Column cambriaNameCol = new Column("name".getBytes(UTF8),
+//        ColumnDescriptor cambriaNameCol = new ColumnDescriptor("name".getBytes(UTF8),
 //                "Cambria Suites Hayden".getBytes("UTF-8"), clock);
-//        Column cambriaPhoneCol = new Column("phone".getBytes(UTF8),
+//        ColumnDescriptor cambriaPhoneCol = new ColumnDescriptor("phone".getBytes(UTF8),
 //                "480-444-4444".getBytes(UTF8), clock);
-//        Column cambriaAddressCol = new Column("address".getBytes(UTF8),
+//        ColumnDescriptor cambriaAddressCol = new ColumnDescriptor("address".getBytes(UTF8),
 //                "400 N. Hayden".getBytes(UTF8), clock);
-//        Column cambriaCityCol = new Column("city".getBytes(UTF8),
+//        ColumnDescriptor cambriaCityCol = new ColumnDescriptor("city".getBytes(UTF8),
 //                "Scottsdale".getBytes(UTF8), clock);
-//        Column cambriaStateCol = new Column("state".getBytes(UTF8),
+//        ColumnDescriptor cambriaStateCol = new ColumnDescriptor("state".getBytes(UTF8),
 //                "AZ".getBytes("UTF-8"), clock);
-//        Column cambriaZipCol = new Column("zip".getBytes(UTF8),
+//        ColumnDescriptor cambriaZipCol = new ColumnDescriptor("zip".getBytes(UTF8),
 //                "85255".getBytes(UTF8), clock);
 //
 //        ColumnOrSuperColumn nameCosc = new ColumnOrSuperColumn();
