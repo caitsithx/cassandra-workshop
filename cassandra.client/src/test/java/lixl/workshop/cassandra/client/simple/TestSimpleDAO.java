@@ -2,22 +2,24 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client.da;
+package lixl.workshop.cassandra.client.simple;
 
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
-import junit.framework.Assert;
-import lixl.workshop.cassandra.client.da.DaoException;
-import lixl.workshop.cassandra.client.da.SimpleDao;
-import lixl.workshop.cassandra.client.vo.EncodedVO;
-import lixl.workshop.cassandra.client.vo.VOFactoryBase;
-import lixl.workshop.cassandra.client.vo.VOFactoryException;
+import lixl.workshop.cassandra.client.DaoException;
+import lixl.workshop.cassandra.client.simple.EncodedVO;
+import lixl.workshop.cassandra.client.simple.SimpleDao;
+import lixl.workshop.cassandra.client.simple.VOFactoryBase;
+import lixl.workshop.cassandra.client.simple.VOFactoryException;
+import lixl.workshop.cassandra.connection.ClientConnectionFactory;
+import lixl.workshop.cassandra.connection.ClientConnectionPool;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -28,37 +30,42 @@ import org.junit.Test;
  */
 public class TestSimpleDAO {
     private static Configuration CFG = null;
-
-    private SimpleDao m_dao = null;
+    private static ClientConnectionPool connPool = null;
+    
+    private SimpleDao simpleDao = null;
     
     @BeforeClass
-    public static void beforeClass() throws ConfigurationException {
-        CFG = new PropertiesConfiguration("test.properties");
-    }
-
-    @org.junit.Before
-    public void before() throws VOFactoryException {
-        m_dao = new SimpleDao();
-        m_dao.setHost(CFG.getString("host"));
-        m_dao.setPort(CFG.getInt("port"));
-        m_dao.setKeySpace(CFG.getString("keyspace"));
-
+    public static void beforeClass() throws ConfigurationException, VOFactoryException {
+        CFG = new PropertiesConfiguration("test.properties"); //$NON-NLS-1$
         VOFactoryBase.loadDefinitionsFromRes("/employee.def.xml");
+        
+        ClientConnectionFactory l_ccf = new ClientConnectionFactory();
+    	l_ccf.setConfiguration(CFG);
+    	connPool = new ClientConnectionPool(l_ccf);
     }
 
-    @org.junit.After
-    public void after() {
-        m_dao.closeConnection();
+    @org.junit.AfterClass
+    public static void after() throws Exception {
+    	connPool.close();
+    }
+    
+    @org.junit.Before
+    public void before() {
+        simpleDao = new SimpleDao();
+        simpleDao.setClientConnectionPool(connPool);
+//        simpleDao.setHost(CFG.getString("host"));
+//        simpleDao.setPort(CFG.getInt("port"));
+//        simpleDao.setKeySpace(CFG.getString("keyspace"));
     }
 
 //    @Test
 //    public void testGetClient() {
 //        try {
-//            Assert.assertNotNull(m_dao.getClient());
+//            Assert.assertNotNull(simpleDao.getClient());
 //        } catch (DaoException ex) {
 //            Assert.fail(ex.getMessage());
 //        } finally {
-//            m_dao.closeConnection();
+//            simpleDao.closeConnection();
 //        }
 //    }
 
@@ -72,7 +79,7 @@ public class TestSimpleDAO {
         EncodedVO l_evo = l_voF.newVO("Testuser", l_values);
 
         try {
-            m_dao.insert(l_evo);
+            simpleDao.insert(l_evo);
         } catch (DaoException ex) {
             Assert.fail(ex.getMessage());
         } 
@@ -83,11 +90,9 @@ public class TestSimpleDAO {
         VOFactoryBase l_voF = VOFactoryBase.getVOFactory("employee");
 
         try {
-            m_dao.inserttoColumnFamily(buildVO(l_voF, 3));
+            simpleDao.inserttoColumnFamily(buildVO(l_voF, 3));
         } catch (DaoException ex) {
             Assert.fail(ex.getMessage());
-        } finally {
-            m_dao.closeConnection();
         }
     }
 
@@ -116,14 +121,14 @@ public class TestSimpleDAO {
         l_values.put("address", "foo address");
         EncodedVO l_evo = l_voF.newVO(l_keyStr, l_values);
         try {
-            m_dao.inserttoColumnFamily(l_evo);
+            simpleDao.inserttoColumnFamily(l_evo);
         } catch (DaoException ex) {
             Assert.fail(ex.getMessage());
         }
         
         EncodedVO l_foundVO =null;
         try {
-            l_foundVO = m_dao.find(l_keyBytes);
+            l_foundVO = simpleDao.find(l_keyBytes);
         } catch (DaoException ex) {
             Assert.fail(ex.getMessage());
         }

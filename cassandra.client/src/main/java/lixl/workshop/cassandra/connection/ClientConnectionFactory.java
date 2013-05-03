@@ -2,7 +2,7 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client;
+package lixl.workshop.cassandra.connection;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.pool.PoolableObjectFactory;

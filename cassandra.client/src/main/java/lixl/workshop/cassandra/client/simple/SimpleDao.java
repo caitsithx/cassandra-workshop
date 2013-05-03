@@ -2,7 +2,7 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client.da;
+package lixl.workshop.cassandra.client.simple;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import lixl.workshop.cassandra.client.DaoBase;
-import lixl.workshop.cassandra.client.vo.EncodedVO;
+import lixl.workshop.cassandra.client.DaoException;
 
 import org.apache.cassandra.thrift.Column;
 import org.apache.cassandra.thrift.ColumnOrSuperColumn;

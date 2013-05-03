@@ -8,7 +8,10 @@ import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Map;
 
-import lixl.workshop.cassandra.client.da.DaoException;
+import lixl.workshop.cassandra.connection.ClientConnection;
+import lixl.workshop.cassandra.connection.ClientConnectionAction;
+import lixl.workshop.cassandra.connection.ClientConnectionPool;
+import lixl.workshop.cassandra.connection.ClientConnectionPoolUsage;
 
 import org.apache.cassandra.thrift.Column;
 import org.apache.cassandra.thrift.ColumnOrSuperColumn;

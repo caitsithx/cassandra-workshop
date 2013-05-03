@@ -2,10 +2,10 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client;
+package lixl.workshop.cassandra.client.jpalike;
 
-import lixl.workshop.cassandra.client.ColumnFamily_A;
-import lixl.workshop.cassandra.client.Column_A;
+import lixl.workshop.cassandra.client.jpalike.ColumnFamily_A;
+import lixl.workshop.cassandra.client.jpalike.Column_A;
 import lixl.workshop.cassandra.model.CassandraType;
 
 

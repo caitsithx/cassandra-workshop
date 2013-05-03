@@ -2,15 +2,14 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client.util;
+package lixl.workshop.cassandra.util;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 
+import lixl.commons.bytes.ByteArrayUtils;
 import lixl.workshop.cassandra.model.CassandraType;
-
-import commons.tools.utilities.general.ByteArrayUtilities;
 
 /**
  * @author <a href="mailto:xiaoliang.li@gemalto.com">lixl </a>
@@ -32,7 +31,7 @@ public class CassandraDataEncoder {
 		case TEXT:
 			return getUTF8Bytes((String)p_value);
 		case INT:
-			return ByteArrayUtilities.intToByteArray((Integer)p_value);
+			return ByteArrayUtils.unsignedInttoByteArray((Integer)p_value);
 		case ASCII:
 			return Charset.forName("US-ASCII").encode((String)p_value).array();
 		default:

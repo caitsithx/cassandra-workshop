@@ -2,11 +2,11 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client;
+package lixl.workshop.cassandra.client.jpalike;
 
-import lixl.workshop.cassandra.client.ColumnFamily_A;
-import lixl.workshop.cassandra.client.Key_A;
-import lixl.workshop.cassandra.client.SuperColumn_A;
+import lixl.workshop.cassandra.client.jpalike.ColumnFamily_A;
+import lixl.workshop.cassandra.client.jpalike.Key_A;
+import lixl.workshop.cassandra.client.jpalike.SuperColumn_A;
 
 import org.junit.Assert;
 import org.junit.Test;

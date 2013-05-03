@@ -2,7 +2,7 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client.da;
+package lixl.workshop.cassandra.client;
 
 /**
  * @author <a href="mailto:xiaoliang.li@gemalto.com">lixl </a>

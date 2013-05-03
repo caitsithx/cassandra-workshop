@@ -2,18 +2,19 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client;
+package lixl.workshop.cassandra.client.jpalike;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 
-import lixl.workshop.cassandra.client.ColumnFamily_A;
-import lixl.workshop.cassandra.client.Column_A;
-import lixl.workshop.cassandra.client.EntityDao;
-import lixl.workshop.cassandra.client.Key_A;
-import lixl.workshop.cassandra.client.SuperColumn_A;
+import lixl.commons.bytes.ByteArrayUtils;
+import lixl.workshop.cassandra.client.jpalike.ColumnFamily_A;
+import lixl.workshop.cassandra.client.jpalike.Column_A;
+import lixl.workshop.cassandra.client.jpalike.EntityDao;
+import lixl.workshop.cassandra.client.jpalike.Key_A;
+import lixl.workshop.cassandra.client.jpalike.SuperColumn_A;
 import lixl.workshop.cassandra.model.CassandraType;
 
 import org.apache.cassandra.thrift.Column;
@@ -23,8 +24,6 @@ import org.apache.cassandra.thrift.SuperColumn;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
-
-import tools.utilities.general.ByteArrayUtilities;
 
 /**
  * @author <a href="mailto:xiaoliang.li@gemalto.com">LI Xiaoliang </a>
@@ -99,7 +98,7 @@ public class TestEntityDao {
 		l_mut.setColumn_or_supercolumn(l_wrapper);
 
 		Column l_ageCol = new Column(Charset.forName("UTF-8").encode("age"));
-		l_ageCol.setValue(ByteArrayUtilities.intToByteArray(10));
+		l_ageCol.setValue(ByteArrayUtils.unsignedInttoByteArray(10));
 		l_wrapper = new ColumnOrSuperColumn();
 		l_wrapper.setColumn(l_ageCol);
 		Mutation l_mut1 = new Mutation();
@@ -150,7 +149,7 @@ public class TestEntityDao {
 		Column l_nameCol = new Column(Charset.forName("UTF-8").encode("name"));
 		l_nameCol.setValue(Charset.forName("UTF-8").encode("lixl"));
 		Column l_ageCol = new Column(Charset.forName("UTF-8").encode("age"));
-		l_ageCol.setValue(ByteArrayUtilities.intToByteArray(30));
+		l_ageCol.setValue(ByteArrayUtils.unsignedInttoByteArray(30));
 		
 		
 		Assert.assertThat(l_supCol.getColumns(), CoreMatchers.hasItems(l_nameCol, l_ageCol));

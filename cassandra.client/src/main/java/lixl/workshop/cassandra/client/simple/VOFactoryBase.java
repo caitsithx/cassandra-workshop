@@ -2,7 +2,7 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client.vo;
+package lixl.workshop.cassandra.client.simple;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,13 +10,13 @@ import java.util.Map.Entry;
 
 import javax.xml.bind.JAXBException;
 
-import lixl.workshop.cassandra.client.util.CassandraDataEncoder;
 import lixl.workshop.cassandra.model.CassandraType;
 import lixl.workshop.cassandra.model.Column;
 import lixl.workshop.cassandra.model.ColumnFamilies;
 import lixl.workshop.cassandra.model.ColumnFamily;
 
 import lixl.workshop.cassandra.model.JAXBLoader;
+import lixl.workshop.cassandra.util.CassandraDataEncoder;
 
 /**
  * @author <a href="mailto:xiaoliang.li@gemalto.com">lixl </a>

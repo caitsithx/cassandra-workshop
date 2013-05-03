@@ -2,13 +2,13 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client.vo;
+package lixl.workshop.cassandra.client.simple;
 
 import java.util.Map.Entry;
 
 import junit.framework.Assert;
-import lixl.workshop.cassandra.client.vo.VOFactoryBase;
-import lixl.workshop.cassandra.client.vo.VOFactoryException;
+import lixl.workshop.cassandra.client.simple.VOFactoryBase;
+import lixl.workshop.cassandra.client.simple.VOFactoryException;
 import lixl.workshop.cassandra.model.CassandraType;
 
 

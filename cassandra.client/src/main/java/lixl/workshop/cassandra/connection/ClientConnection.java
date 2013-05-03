@@ -2,9 +2,9 @@
  * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
  *
  */
-package lixl.workshop.cassandra.client;
+package lixl.workshop.cassandra.connection;
 
-import lixl.workshop.cassandra.client.da.DaoException;
+import lixl.workshop.cassandra.client.DaoException;
 
 import org.apache.cassandra.thrift.Cassandra.Client;
 import org.apache.thrift.protocol.TBinaryProtocol;
@@ -70,7 +70,7 @@ public class ClientConnection {
 		return m_tTransport;
 	}
 
-	protected Client getClient() throws DaoException {
+	public final Client getClient() throws DaoException {
 		if(m_client == null) {
 			TProtocol proto = new TBinaryProtocol(getTransport());
 			m_client = new Client(proto);
