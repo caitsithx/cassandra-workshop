@@ -1,10 +1,10 @@
 package lixl.workshop.cassandra.model;
 /*
- * Copyright (c) 2013 Gemalto - All rights reserved.
+ * Copyright (c) 2013 NO - All rights reserved.
  * This software is the confidential and proprietary information of 
- * Gemalto ("Confidential Information"). You shall not disclose such 
+ * NO ("Confidential Information"). You shall not disclose such 
  * Confidential Information and shall use it only in accordance with 
- * the terms of the license agreement you entered into with Gemalto.
+ * the terms of the license agreement you entered into with NO.
  *
  */
 
@@ -26,7 +26,7 @@ import org.xml.sax.SAXException;
 
 
 /**
- * @author <a href="mailto:xiaoliang.li@gemalto.com">LI Xiaoliang </a>
+ * @author <a href="mailto:caitsithx@live.cn">LI Xiaoliang </a>
  * 
  */
 public class JAXBLoader {
@@ -44,7 +44,7 @@ public class JAXBLoader {
 		try{
 		SchemaFactory l_sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		Schema l_schema = l_sf.newSchema(new StreamSource(
-				JAXBLoader.class.getResourceAsStream("/lixl.workshop.cassandra.def.xsd")));
+				JAXBLoader.class.getResourceAsStream("/lixl.workshop.cassandra.model.xsd")));
 		unmarshaller.setSchema(l_schema);
 		} catch (SAXException ex) {
 			//TODO

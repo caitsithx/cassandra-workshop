@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
+ * Copyright (c) 2013 - caitsithx@live.cn.
  *
  */
 package lixl.workshop.cassandra.client.jpalike;

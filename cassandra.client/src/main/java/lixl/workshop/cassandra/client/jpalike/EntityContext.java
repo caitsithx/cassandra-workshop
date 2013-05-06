@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 - Xiaoliang.li@gemalto.com.
+ * Copyright (c) 2013 - caitsithx@live.cn.
  *
  */
 package lixl.workshop.cassandra.client.jpalike;
@@ -12,7 +12,7 @@ import lixl.workshop.cassandra.client.DaoException;
 import lixl.workshop.cassandra.model.CassandraType;
 
 /**
- * @author <a href="mailto:xiaoliang.li@gemalto.com">LI Xiaoliang </a>
+ * @author <a href="mailto:caitsithx@live.cn">LI Xiaoliang </a>
  *
  */
 public class EntityContext {
@@ -50,7 +50,7 @@ public class EntityContext {
 		l_scfDesc.name = l_cf_A.name().isEmpty() ? p_entityClass.getSimpleName() 
 				: l_cf_A.name();
 		
-		l_scfDesc.klass = p_entityClass;
+		l_scfDesc.setMappingClass(p_entityClass);
 		
 		l_scfDesc.superColumnMap = new HashMap<>();
 		
@@ -88,6 +88,7 @@ public class EntityContext {
 		SCDescriptor l_scDesc = new SCDescriptor();
 		l_scDesc.columnMap = new HashMap<>();
 		l_scDesc.fieldName = p_scField.getName();
+		l_scDesc.setMappingClass(p_scField.getDeclaringClass());
 
 		Field[] l_cFields = p_scField.getDeclaringClass().getDeclaredFields();
 		for (Field l_cField : l_cFields) {
@@ -114,16 +115,16 @@ public class EntityContext {
 
 class SCFDescriptor {
 	/**
-	 * @return the klass
+	 * @return the mappingClass
 	 */
 	public Class<?> getKlass() {
-		return this.klass;
+		return this.mappingClass;
 	}
 	/**
-	 * @param p_klass the klass to set
+	 * @param p_klass the mappingClass to set
 	 */
-	public void setKlass(Class<?> p_klass) {
-		this.klass = p_klass;
+	public void setMappingClass(Class<?> p_klass) {
+		this.mappingClass = p_klass;
 	}
 	/**
 	 * @return the name
@@ -149,33 +150,40 @@ class SCFDescriptor {
 	public void setKeyDescriptor(ColumnDescriptor p_keyDescriptor) {
 		this.keyDescriptor = p_keyDescriptor;
 	}
-	public Class<?> klass;
+	private Class<?> mappingClass;
 	String name;
 	
 	ColumnDescriptor keyDescriptor;
 	Map<String, SCDescriptor> superColumnMap;
+	/**
+	 * @param p_string
+	 * @return
+	 */
+	public SCDescriptor findSuperColumnDesc(String p_string) {
+		return superColumnMap.get(p_string);
+	}
 	
 }
 
 class SCDescriptor {
-	Class<?> superColumnClass;
+	Class<?> mappingClass;
 	String fieldName;
 	String keyFieldName;
 	
 	Map<String, ColumnDescriptor> columnMap;
 
 	/**
-	 * @return the superColumnClass
+	 * @return the mappingClass
 	 */
-	public Class<?> getSuperColumnClass() {
-		return this.superColumnClass;
+	public Class<?> getMappingClass() {
+		return this.mappingClass;
 	}
 
 	/**
-	 * @param p_superColumnClass the superColumnClass to set
+	 * @param p_superColumnClass the mappingClass to set
 	 */
-	public void setSuperColumnClass(Class<?> p_superColumnClass) {
-		this.superColumnClass = p_superColumnClass;
+	public void setMappingClass(Class<?> p_superColumnClass) {
+		this.mappingClass = p_superColumnClass;
 	}
 
 	/**
@@ -204,6 +212,14 @@ class SCDescriptor {
 	 */
 	public void setKeyFieldName(String p_keyFieldName) {
 		this.keyFieldName = p_keyFieldName;
+	}
+
+	/**
+	 * @param p_colName
+	 * @return
+	 */
+	public ColumnDescriptor findColumnDesc(String p_colName) {
+		return this.columnMap.get(p_colName);
 	}
 }
 

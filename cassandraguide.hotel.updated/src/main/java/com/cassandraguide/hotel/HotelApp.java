@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 - Xiaoliang.li@gemalto.com.
+ * Copyright (c) 2013 - caitsithx@live.cn.
  *
  */
 package com.cassandraguide.hotel;

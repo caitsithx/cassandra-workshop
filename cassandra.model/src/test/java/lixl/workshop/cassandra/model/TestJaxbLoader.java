@@ -1,10 +1,10 @@
 package lixl.workshop.cassandra.model;
 /*
- * Copyright (c) 2013 Gemalto - All rights reserved.
+ * Copyright (c) 2013 NO - All rights reserved.
  * This software is the confidential and proprietary information of 
- * Gemalto ("Confidential Information"). You shall not disclose such 
+ * NO ("Confidential Information"). You shall not disclose such 
  * Confidential Information and shall use it only in accordance with 
- * the terms of the license agreement you entered into with Gemalto.
+ * the terms of the license agreement you entered into with NO.
  *
  * $Revison$
  * $author$
@@ -16,19 +16,16 @@ import java.util.List;
 import javax.xml.bind.JAXBException;
 
 import junit.framework.Assert;
-import lixl.workshop.cassandra.model.CassandraType;
-import lixl.workshop.cassandra.model.Column;
-import lixl.workshop.cassandra.model.ColumnFamilies;
-import lixl.workshop.cassandra.model.ColumnFamily;
 
-import lixl.workshop.cassandra.model.JAXBLoader;
+import org.junit.Test;
 
 /**
- * @author <a href="mailto:xiaoliang.li@gemalto.com">LI Xiaoliang </a>
+ * @author <a href="mailto:caitsithx@live.cn">LI Xiaoliang </a>
  * 
  */
 public class TestJaxbLoader {
 	
+	@Test
 	public void testLoad() {
 		ColumnFamilies l_cfs = null;
 		try {

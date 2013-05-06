@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
+ * Copyright (c) 2013 - caitsithx@live.cn.
  *
  */
 package lixl.workshop.cassandra.client.simple;
@@ -13,7 +13,7 @@ import lixl.workshop.cassandra.model.CassandraType;
 
 
 /**
- * @author <a href="mailto:xiaoliang.li@gemalto.com">LI Xiaoliang </a>
+ * @author <a href="mailto:caitsithx@live.cn">LI Xiaoliang </a>
  *
  */
 public class TestVOFactoryBase {

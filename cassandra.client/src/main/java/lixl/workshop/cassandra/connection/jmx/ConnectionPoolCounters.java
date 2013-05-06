@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 - Xiaoliang.li@gemalto.com.
+ * Copyright (c) 2013 - caitsithx@live.cn.
  *
  */
 package lixl.workshop.cassandra.connection.jmx;
@@ -7,7 +7,7 @@ package lixl.workshop.cassandra.connection.jmx;
 import lixl.workshop.cassandra.connection.ClientConnectionPool;
 
 /**
- * @author <a href="mailto:xiaoliang.li@gemalto.com">LI Xiaoliang </a>
+ * @author <a href="mailto:caitsithx@live.cn">LI Xiaoliang </a>
  *
  */
 public class ConnectionPoolCounters implements ConnectionPoolCountersMBean{

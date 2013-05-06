@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
+ * Copyright (c) 2013 - caitsithx@live.cn.
  *
  */
 package lixl.workshop.cassandra.connection;
@@ -11,7 +11,7 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * @author <a href="mailto:xiaoliang.li@gemalto.com">lixl </a>
+ * @author <a href="mailto:caitsithx@live.cn">lixl </a>
  *
  */
 public class ClientConnectionPoolUsage {

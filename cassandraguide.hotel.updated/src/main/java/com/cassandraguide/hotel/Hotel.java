@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 - xiaoliang.li@gemalto.com.
+ * Copyright (c) 2013 - caitsithx@live.cn.
  *
  */
 package com.cassandraguide.hotel;
@@ -11,7 +11,7 @@ import lixl.workshop.cassandra.client.jpalike.Key_A;
 import lixl.workshop.cassandra.model.CassandraType;
 
 /**
- * @author <a href="mailto:xiaoliang.li@gemalto.com">lixl </a>
+ * @author <a href="mailto:caitsithx@live.cn">lixl </a>
  *
  */
 
